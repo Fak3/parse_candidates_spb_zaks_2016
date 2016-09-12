@@ -16,7 +16,7 @@ def get_html(url):
         print('try %d get %s' % (retry, url))
         response = get(url)
         if response.status_code == 200 and response.text:
-            soup = BeautifulSoup(response.text)
+            soup = BeautifulSoup(response.text, 'html.parser')
             if soup.find('tbody', id='test'):
                 return soup
     print('Max reties exceeded')
